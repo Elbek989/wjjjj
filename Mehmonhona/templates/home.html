@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Bosh sahifa{% endblock %}
+
+{% block content %}
+<h1>Xonalar ro‘yxati</h1>
+
+<!-- Foydalanuvchi qo‘shish tugmasi -->
+<div class="mb-3">
+  <a href="{% url 'add_user' %}" class="btn btn-success">➕ Foydalanuvchi qo‘shish</a>
+</div>
+
+{% if rooms %}
+  <ul class="list-group">
+    {% for room in rooms %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ room.title }} — Narxi: {{ room.price }}      Type:{{room.id_room_type}}  Size:{{room.id_room_size}}
+        {% if room.is_active %}
+          <a href="{% url 'deal' room.id %}" class="btn btn-primary btn-sm">Bron qilish</a>
+        {% else %}
+          <span class="badge bg-secondary">Band</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Hozircha xona mavjud emas.</p>
+{% endif %}
+
+{% endblock %}
