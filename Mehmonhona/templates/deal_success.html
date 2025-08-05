@@ -6,7 +6,10 @@
 <div class="container mt-5 text-center">
   <div class="alert alert-success shadow-sm" role="alert">
     <h4 class="alert-heading"> Bron muvaffaqiyatli bajarildi!</h4>
-    <p><strong>{{ user.username }}</strong>, siz <strong>{{ room.title }}</strong> xonasini muvaffaqiyatli band qildingiz.</p>
+    <p>
+      <strong>{{ user.first_name|default:user.username }}</strong>,
+      siz <strong>{{ room.title }}</strong> xonasini muvaffaqiyatli band qildingiz.
+    </p>
     <hr>
     <p class="mb-0">Bron tugash vaqti: <strong>{{ deal.end_time|date:"d-m-Y H:i" }}</strong></p>
   </div>

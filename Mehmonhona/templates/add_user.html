@@ -1,17 +1,23 @@
 <h2>Foydalanuvchi Qo‘shish</h2>
+
 <form method="post">
     {% csrf_token %}
-    <label>Ism (username):</label><br>
+
+    <label>Id-raqam (username):</label><br>
+    <input type="text" name="id" required><br><br>
+
+    <label>Ism:</label><br>
     <input type="text" name="username" required><br><br>
 
     <label>Familiya:</label><br>
     <input type="text" name="surnamename" required><br><br>
-
-    <label>Pasport seriyasi (seria):</label><br>
-    <input type="number" name="seria" required><br><br>
 
     <label>Telefon raqam:</label><br>
     <input type="text" name="phone" required><br><br>
 
     <button type="submit">Saqlash</button>
 </form>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}

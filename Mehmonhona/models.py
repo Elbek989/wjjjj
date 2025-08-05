@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Category(models.Model):
@@ -50,8 +51,11 @@ class Room(models.Model):
         return f"{self.title, self.id_room_type}"
 
 
+
+from .models import Room  # yoki qayerda bo‘lsa
+
 class Deal(models.Model):
-    id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    id_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     id_room = models.ForeignKey(Room, on_delete=models.CASCADE)
     start_time = models.DateTimeField(auto_now_add=True)
     end_time = models.DateTimeField()
