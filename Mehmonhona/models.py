@@ -52,7 +52,7 @@ class Room(models.Model):
 
 
 
-from .models import Room  # yoki qayerda bo‘lsa
+from .models import Room
 
 class Deal(models.Model):
     id_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

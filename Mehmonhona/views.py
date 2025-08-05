@@ -22,6 +22,9 @@ def home(request):
 
 def bron_qilish(request, room_id):
     room = get_object_or_404(Room, pk=room_id)
+    room.is_active=False
+
+
     error = None
 
     if request.method == 'POST':
@@ -41,14 +44,23 @@ def bron_qilish(request, room_id):
 
 
         Deal.objects.create(
+
             id_user=user,
             id_room=room,
             end_time=end_time
         )
 
-        return redirect('deal_success.html')
+        return redirect('deal_success')
+
+
 
     return render(request, 'bron_form.html', {'room': room})
+def deal_success(request):
+    return render(request, 'deal_success.html')
+
+
+
+
 
 
 
@@ -56,7 +68,7 @@ def bron_qilish(request, room_id):
 
 def add_user(request):
     if request.method == 'POST':
-        seria_id = request.POST.get('id')  # foydalanuvchining passport raqami yoki ID
+        seria_id = request.POST.get('id')
         name = request.POST.get('username')
         surname = request.POST.get('surnamename')
         phone = request.POST.get('phone')

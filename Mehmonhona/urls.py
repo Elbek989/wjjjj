@@ -6,4 +6,5 @@ urlpatterns = [
     path('deal/<int:room_id>/', views.bron_qilish, name='deal'),
     path('add-user/', views.add_user, name='add_user'),
     path('users/', views.show_users, name='show_users'),
+    path('deal/success/', views.deal_success, name='deal_success'),
 ]
